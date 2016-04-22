@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        maven {
+            url repoUrl
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+configure(subprojects) { project ->
+    apply from: file("${rootProject.rootDir}/gradle/shared.gradle")
+    apply plugin: 'spring-boot'
+    bootRepackage.enabled = false
+
+    repositories {
+        maven {
+            url repoUrl
+        }
+        mavenCentral()
+    }
+
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+
+    group 'com.ddd.adk'
+    version '1.0.0-beta'
+
+    configurations {
+        // replaced with jcl-over-slf4j
+        all*.exclude group: 'commons-logging', module: 'commons-logging'
+        // replaced with log4j-over-slf4j
+        all*.exclude group: 'log4j', module: 'log4j'
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-aop'
+        compile 'org.springframework.boot:spring-boot-starter-cache'
+        compile 'org.springframework.boot:spring-boot-starter-jdbc'
+        compile 'org.springframework.boot:spring-boot-starter-web'
+
+        compile "com.google.guava:guava:${guava_version}"
+
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+
+
+}
