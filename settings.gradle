@@ -3,4 +3,5 @@ rootProject.name = 'ddd-dev'
 include 'common'
 include 'event'
 include 'biz-executor'
+include 'domain'
 
