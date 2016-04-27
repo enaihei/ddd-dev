@@ -38,8 +38,10 @@ configure(subprojects) { project ->
         compile 'org.springframework.boot:spring-boot-starter-cache'
         compile 'org.springframework.boot:spring-boot-starter-jdbc'
         compile 'org.springframework.boot:spring-boot-starter-web'
+        compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
         compile "com.google.guava:guava:${guava_version}"
+        compile "org.javassist:javassist:${javassist_version}"
 
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
